@@ -1,0 +1,31 @@
+<div class="mask" *ngIf="options">
+    <div class="ui modal" style="width: 400px;display: block;margin-left:-200px;margin-top:-150px;">
+        <div class="header" *ngIf="options.title">
+            {{options.title}}
+        </div>
+        <div class="content" *ngIf="options.text">
+            {{options.text}}
+        </div>
+        <!--confirm区域-->
+        <div class="actions" *ngIf="options.type=='confirm'">
+            <div class="ui cancel button" (click)="hintDialog()">
+                取消
+            </div>
+            <div class="ui blue button" (click)="confirmDialog()">
+                确定
+            </div>
+        </div>
+        <!--error区域-->
+        <div class="actions" *ngIf="options.type=='error'">
+            <button class="negative ui button" (click)="hintDialog()">
+                确定
+            </button>
+        </div>
+        <!--success区域-->
+        <div class="actions" *ngIf="options.type=='success'">
+            <button class="ui blue button" (click)="hintDialog()">
+                确定
+            </button>
+        </div>
+    </div>
+</div>

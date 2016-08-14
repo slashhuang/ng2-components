@@ -1,0 +1,28 @@
+<div class="container">
+    <form class="ui form"
+          [ngFormModel]="myForm"
+        (ngSubmit)="onSubmit()"
+        #heroForm="ngForm">
+        <div class="ui form">
+            <div class="fields">
+                <div class="field">
+                    <label>请输入姓名</label>
+                    <input type="text"
+                           [ngFormControl]='nameControl'>
+                </div>
+                <div class="field">
+                    <label>请输入数字</label>
+                    <input type="text"
+                           [ngFormControl]='numControl' >
+                </div>
+                <div class="field">
+                    <label>邮箱</label>
+                    <input type="text"
+                           placeholder="请输入邮箱"
+                           [ngFormControl]='emailControl' >
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="ui button" [disabled]="!heroForm.form.valid">提交</button>
+    </form>
+</div>

@@ -1,0 +1,21 @@
+{
+  "name": "angular2-tour-of-heroes",
+  "description": "",
+  "main": "",
+  "authors": [
+    "slashhuang <627284482@qq.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/slashhuang/ng2-components",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "semantic": "semantic-ui#~2.2.2"
+  }
+}

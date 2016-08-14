@@ -1,0 +1,7 @@
+<h1>{{title}}</h1>
+<div>
+    <a (click)="popConfirm()">确认提示</a>
+    <a (click)="popError()">失败提示</a>
+    <a (click)="popSuccess()">成功提示</a>
+</div>
+<pop-dialog [options]="dialogOption" ></pop-dialog>

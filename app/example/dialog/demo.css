@@ -1,0 +1,16 @@
+.f-r{
+    float:right
+}
+a{
+    text-decoration: underline;
+    color:cornflowerblue;
+    cursor:pointer;
+    padding:20px;
+}
+a:hover{
+    color:orangered;
+}
+nav{
+    border-top:1px solid lightblue;
+    margin-top:10px;
+}
