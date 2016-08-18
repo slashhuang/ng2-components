@@ -7,10 +7,15 @@
 
 ## 目录架构
 |-app[逻辑代码]  
+
 |-|- src [源代码]  
+
 |-|- src/index [组件API列表]  
+
 |-|- example [示例目录文件]  
+
 |-|- example/dialog [dialog组件示例]  
+
 |-|- example/validator [validator组件示例]  
 
 ## 目前已经集成的组件
