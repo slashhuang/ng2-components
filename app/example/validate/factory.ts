@@ -15,7 +15,9 @@ export class BaseValidation {
         maxLength: 256
     };
     public get validator(): (control: AbstractControl) => IFieldValidatorResult {
+        debugger;
         return (control: AbstractControl): IFieldValidatorResult => {
+            debugger;
             let result: ValidationMessages = new ValidationMessages();
             if (HasValue.check(control) === false) {
                 result.addMessage('required', `Email is required`, this.config);

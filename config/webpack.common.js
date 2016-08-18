@@ -1,6 +1,6 @@
 
 /**
- * @author: @AngularClass
+ * @author: slashuang
  */
 
 const webpack = require('webpack');
@@ -18,7 +18,7 @@ const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
  * 设置HTML元数据
  */
 const METADATA = {
-  title: 'angular2-tutorial',
+  title: 'ng2组件开发',
   baseUrl: '/'
 };
 

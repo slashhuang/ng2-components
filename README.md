@@ -6,6 +6,7 @@
 ```
 
 ### [ng2的API列表](https://angular.io/docs/ts/latest/api/)
+### [ng2中国镜像文档](http://a2.hubwiz.com/docs/ts/latest/api/)
 
 ### 目录架构
 |- app[逻辑代码]  
