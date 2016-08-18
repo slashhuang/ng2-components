@@ -3,6 +3,7 @@
 ```bash
     npm install [typings install ]
     npm start
+    open localhost:3001
 ```
 
 ## 目录架构

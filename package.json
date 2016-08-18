@@ -1,6 +1,7 @@
 {
-  "name": "angular2-components",
+  "name": "ng2-components",
   "version": "0.0.1",
+  "description": "angular2组件开发模块",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached",
     "test": "karma start",
@@ -75,5 +76,11 @@
     "webpack-md5-hash": "^0.0.5",
     "webpack-merge": "^0.12.0",
     "zone.js": "~0.6.12"
-  }
+  },
+  "repository": "git@github.com:slashhuang/ng2-components.git",
+  "bugs": {
+    "url": "http://github.com:slashhuang/ng2-components/issues"
+  },
+  "homepage": "git@github.com:slashhuang/ng2-components.git"
+
 }
