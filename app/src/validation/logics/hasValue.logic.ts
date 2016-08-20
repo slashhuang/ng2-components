@@ -6,7 +6,6 @@ export class HasValue {
         if (isBlank(control.value) || (isString(control.value) && control.value.trim() === '')) {
             return false;
         }
-
         return true;
     }
 }

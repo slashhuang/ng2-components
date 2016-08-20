@@ -5,7 +5,6 @@ export class Range {
         if (isNaN(+control.value) === true) {
             throw new Error(`"${control.value}" is not a number"`);
         }
-
         if (+control.value < minValue || +control.value > maxValue) {
             return false;
         }

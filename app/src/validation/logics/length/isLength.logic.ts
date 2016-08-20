@@ -5,7 +5,6 @@ export class IsLength {
         if (control.value.length !== length) {
             return false;
         }
-
         return true;
     }
 }
