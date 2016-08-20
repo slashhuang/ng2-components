@@ -5,7 +5,6 @@ export class Min {
         if (isNaN(+control.value) === true) {
             throw new Error(`"${control.value}" is not a number"`);
         }
-
         if (+control.value < min) {
             return false;
         }

@@ -9,101 +9,119 @@ import { HasValue ,IsNumeric, Min, Max ,
     Range , MinLength ,MaxLength , Length ,
     IsLength,IsPattern ,IsEmail,IsTelephone } from "../../src/index";
 
+interface  ErrorShape{
+    error:string
+};
+interface ErrorObjShape{
+    [key:string]:ErrorShape
+}
+
 export class SuperValidator {
-    public emailControl: Control;
-    public telephoneControl: Control;
-    public hasValueControl:Control;
-    public minLengthControl: Function;
-    public maxLengthControl:Function;
-    public lengthControl : Function;
-    public rangeControl : Function;
-    public isLengthControl : Function;
-    ErrorMessage:string;
+    public _emailControl: Function;
+    public _telephoneControl: Function;
+    public _hasValueControl:Function;
+    public _min_lengthControl: Function;
+    public _max_lengthControl:Function;
+    public _lengthControl : Function;
+    public _rangeControl : Function;
+    public _isLengthControl : Function;
     constructor(){
-        this.emailControl = new Control('',this.EmailValidator);
-        this.telephoneControl = new Control('',this.TelephoneValidator);
-        this.minLengthControl = (min)=>new Control('',this.MinLengthValidator(min));
-        this.maxLengthControl = (max)=>new Control('',this.MaxLengthValidator(max));
-        this.lengthControl = (minMax:{min:number,max:Number})=>new Control('',this.LengthValidator(minMax));
-        this.rangeControl = (minMax:{min:number,max:Number})=>new Control('',this.rangeValidator(minMax));
-        this.isLengthControl = (length)=>new Control('',this.IsLengthValidator(length));
-        this.hasValueControl = new Control('',this.HasValueValidator)
+        this._emailControl = (hint:string)=>new Control('',this.EmailValidator(hint));
+        this._telephoneControl = (hint:string)=>new Control('',this.TelephoneValidator(hint));
+        this._min_lengthControl = (min:number,hint:string)=>new Control('',this.MinLengthValidator(min,hint));
+        this._max_lengthControl = (max:number,hint:string)=>new Control('',this.MaxLengthValidator(max,hint));
+        this._lengthControl = (minMax:{min:number,max:number},hint:string)=>new Control('',this.LengthValidator(minMax,hint));
+        this._rangeControl = (minMax:{min:number,max:number},hint:string)=>new Control('',this.rangeValidator(minMax,hint));
+        this._isLengthControl = (length:number,hint:string)=>new Control('',this.IsLengthValidator(length,hint));
+        this._hasValueControl = (hint:string)=>new Control('',this.HasValueValidator(hint))
     }
-    showError(_controlArr:ControlGroup){
-        let _1stError:any={error:''};
+    showAllError(_controlArr:ControlGroup):ErrorObjShape{
+        
+        let ErrorArr:ErrorObjShape={};
         let sub_control =_controlArr.controls;
         for(let _control in sub_control){
             if(sub_control[_control].errors){
-                _1stError = sub_control[_control].errors;
-                break;
+                ErrorArr[_control] =<ErrorShape>sub_control[_control].errors;
             }
         }
-        if(_1stError){
-            this.ErrorMessage =  _1stError.error
+        return ErrorArr;
+    }
+    showError(sub_control:AbstractControl):ErrorShape{
+        let _Error:any= sub_control.errors;
+        if(_Error &&  _Error.error){
+            return _Error.error;
+        };
+    }
+    private EmailValidator(hint:string){
+        return (control:AbstractControl)=>{
+            if(!IsEmail.check(control)){
+                return {
+                        'error': hint
+                };
+            }
         }
     }
-    EmailValidator(control:AbstractControl){
-        if(!IsEmail.check(control)){
-            return {
-                'error': '邮箱格式不正确'
-            };
+
+    private TelephoneValidator(hint:string){
+        return (control:AbstractControl)=>{
+            if(!IsTelephone.check(control)){
+                return {
+                    'error': hint
+                };
+            }
         }
     }
-    TelephoneValidator(control:AbstractControl){
-        if(!IsTelephone.check(control)){
-            return {
-                'error': '请输入正确的电话号码'
-            };
-        }
-    }
-    MinLengthValidator(min:Number) {
+
+    private MinLengthValidator(min:number,hint:string){
         return (control:AbstractControl)=>{
             if (!MinLength.check(control,min)) {
                 return {
-                    'error': `请输入至少${min}个文字`
+                    'error': hint
                 };
             }
         }
     }
-    HasValueValidator(control:AbstractControl){
-        if(!HasValue.check(control)){
-            return {
-                'error': '输入值不能为空'
-            };
+    private HasValueValidator(hint:string){
+        return (control:AbstractControl)=> {
+            if (!HasValue.check(control)) {
+                return {
+                    'error': hint
+                };
+            }
         }
     }
-    MaxLengthValidator(max:Number) {
+    private MaxLengthValidator(max:number,hint:string){
         return (control:AbstractControl)=>{
             if (!MaxLength.check(control,max)) {
                 return {
-                    'error': `请输入少于${max}个文字`
+                    'error': hint
                 };
             }
         }
     }
-    LengthValidator(minMax:{min:number,max:Number}) {
+    private LengthValidator(minMax:{min:number,max:number},hint:string){
         return (control:AbstractControl)=>{
             if (!Length.check(control,minMax.min,minMax.max)) {
                 return {
-                    'error': `请输入至少${minMax.min}个文字,请输入至多${minMax.max}个文字`
+                    'error': hint
                 };
             }
         }
     }
-    rangeValidator(minMax:{min:number,max:number}){
+    private  rangeValidator(minMax:{min:number,max:number},hint:string){
         return (control:AbstractControl)=>{
             if (!Range.check(control,minMax.min,minMax.max)) {
                 return {
-                    'error': `请输入介于${minMax.min}和${minMax.max}的数字`
+                    'error': hint
                 };
             }
         }
     };
-    IsLengthValidator(length:number){
+    private IsLengthValidator(length:number,hint:string){
         return (control:AbstractControl)=>{
             if (!IsLength.check(control,length)) {
                 return {
-                    'error': `请输入正确的文字数目`
+                    'error': hint
                 };
             }
         }

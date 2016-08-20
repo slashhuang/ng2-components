@@ -2,54 +2,35 @@
  * Created by slashhuang on 16/8/14.
  */
 import { Component, OnInit } from '@angular/core';
-import { Control, ControlGroup,AbstractControl } from '@angular/common';
+import { Control, ControlGroup } from '@angular/common';
 
-import { HasValue ,IsNumeric, Min, Max ,
-    Range , MinLength ,MaxLength , Length ,
-    IsLength,IsPattern ,IsEmail } from "../../src/index";
-
+/**
+ * 验证组件父类
+ */
+import { SuperValidator } from "../../src/index";
 
 @Component({
     template:require('./demo.html'),
     selector: 'validate-demo'
 })
-export class ValidateDemo implements OnInit {
+export class ValidateDemo extends  SuperValidator implements OnInit {
     private myForm: ControlGroup;
     private emailControl: Control;
-    submitted:boolean;
-    ErrorMessage:string;
+    private textControl:Control;
     constructor(){
-        this.submitted = true;
+        super();
     }
     public ngOnInit(): void {
-        this.emailControl = new Control('',this.EmailValidator);
-
+        this.emailControl = this._emailControl('请输入正确的邮箱地址');
+        this.textControl = this._hasValueControl('该值不能为空');
         this.myForm = new ControlGroup({
-            emailControl: this.emailControl
+            email: this.emailControl,
+            text: this.textControl
         });
     }
-    showError(_controlArr:ControlGroup){
-        let _1stError:any={error:''};
-        let sub_control =_controlArr.controls;
-        for(let _control in sub_control){
-            if(sub_control[_control].errors){
-                _1stError = sub_control[_control].errors;
-                break;
-            }
-        }
-        if(_1stError){
-            this.ErrorMessage =  _1stError.error
-        }
+    get ErrorMessage():string{
+        let errorObj = this.showAllError(this.myForm);
+        return JSON.stringify(errorObj,null,2)
     }
-    EmailValidator(control:AbstractControl){
-        if(!IsEmail.check(control)){
-            return {
-                'error': '邮箱格式不正确'
-            };
-        }
-    }
-    onSubmit() {
-        this.submitted = true;
-        this.showError(this.myForm);
-    }
+    onSubmit() {}
 }
