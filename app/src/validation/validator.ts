@@ -7,7 +7,7 @@ import { Control, ControlGroup,AbstractControl } from '@angular/common';
 
 import { HasValue ,TrueValue,IsNumeric, Min, Max ,
     Range , MinLength ,MaxLength , Length ,
-    IsLength,IsPattern ,IsEmail,IsTelephone } from "./index";
+    IsLength,IsPattern ,IsEmail,IsTelephone } from "./logic";
 
 interface  ErrorShape{
     error:string
