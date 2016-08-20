@@ -75,10 +75,9 @@ export class IsNumeric {
 //验证最大值
 export class Max {
     public static check(control: AbstractControl, max: number): boolean {
-        if (isNaN(+control.value) === true) {
+        if (isNaN(+control.value) === true || !HasValue.check(control)) {
             return false
         }
-
         if (+control.value > max) {
             return false;
         }
@@ -89,7 +88,7 @@ export class Max {
 //验证最小值
 export class Min {
     public static check(control: AbstractControl, min: number): boolean {
-        if (isNaN(+control.value) === true) {
+        if (isNaN(+control.value) === true  || !HasValue.check(control)) {
             return false
         }
         if (+control.value < min) {
@@ -102,7 +101,7 @@ export class Min {
 //验证最小值最大值之间
 export class Range {
     public static check(control: AbstractControl, minValue: number, maxValue: number): boolean {
-        if (isNaN(+control.value) === true) {
+        if (isNaN(+control.value) === true || !HasValue.check(control)) {
             return false
         }
         if (+control.value < minValue || +control.value > maxValue) {

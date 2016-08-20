@@ -1,9 +1,8 @@
 # ng2-components[ng2组件开发]
 ## 命令
 ```bash
-    npm install [typings install ]
+    npm install
     npm start
-    open localhost:3001
 ```
 
 ## 目录架构

@@ -4,7 +4,7 @@
             <form class="ui form"
                   [ngFormModel]="myForm"
                   (ngSubmit)="submitted=true">
-                <div class="fields three">
+                <div class="fields four">
                     <div class="field ">
                         <label>请输入4位验证码</label>
                         <input type="text"
@@ -22,6 +22,12 @@
                         <input type="text"
                                [ngFormControl]='minControl'>
                         <label class="orange">{{showError(minControl)}}</label>
+                    </div>
+                    <div class="field ">
+                        <label>请输入小于100的数字</label>
+                        <input type="text"
+                               [ngFormControl]='maxControl'>
+                        <label class="orange">{{showError(maxControl)}}</label>
                     </div>
 
                 </div>

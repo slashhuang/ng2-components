@@ -22,6 +22,7 @@ export class ValidateDemo extends  SuperValidator {
     private selectControl : Control;
     private passwordControl : Control;
     private mustCheckControl: Control;
+    private maxControl :Control;
     public minControl:Control;
     private numControl : Control;
     private submitted :boolean =false;
@@ -34,7 +35,8 @@ export class ValidateDemo extends  SuperValidator {
         this.passwordControl = this._lengthControl({min:6,max:14},'请输入6至14位密码');
         this.mustCheckControl = this._trueValueControl('请同意该协议');
         this.numControl = this._rangeControl({min:10,max:100},'请输入10-100内的数字');
-        this.minControl = this._min_valueControl(100,'请输入大于100的数字')
+        this.minControl = this._min_valueControl(100,'请输入大于100的数字');
+        this.maxControl =this._max_valueControl(100,'请输入小于100的数字');
         this.myForm = new ControlGroup({
             email: this.emailControl,
             text: this.textControl,
@@ -43,7 +45,8 @@ export class ValidateDemo extends  SuperValidator {
             code:this.codeControl,
             select:this.selectControl,
             pass:this.passwordControl,
-            protocal: this.mustCheckControl
+            max: this.maxControl,
+            agree: this.mustCheckControl
         });
     }
  

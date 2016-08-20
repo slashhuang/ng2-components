@@ -27,6 +27,7 @@ export class SuperValidator {
     public _trueValueControl : Function;
     public _isLengthControl : Function;
     public _min_valueControl:Function;
+    public _max_valueControl:Function;
     constructor(){
         this._emailControl = (hint:string)=>new Control('',this.EmailValidator(hint));
         this._telephoneControl = (hint:string)=>new Control('',this.TelephoneValidator(hint));
@@ -37,6 +38,7 @@ export class SuperValidator {
         this._isLengthControl = (length:number,hint:string)=>new Control('',this.IsLengthValidator(length,hint));
         this._hasValueControl = (hint:string)=>new Control('',this.HasValueValidator(hint));
         this._min_valueControl = (min:number,hint:string)=>new Control('',this.minValueValidator(min,hint));
+        this._max_valueControl = (min:number,hint:string)=>new Control('',this.maxValueValidator(min,hint));
         this._trueValueControl =(hint:string)=>new Control('',this.trueValueValidator(hint));
     }
     showAllError(_controlArr:ControlGroup):ErrorObjShape{
@@ -60,6 +62,15 @@ export class SuperValidator {
     private minValueValidator(min:number,hint:string){
         return (control:AbstractControl)=>{
             if(!Min.check(control,min)){
+                return {
+                    'error': hint
+                };
+            }
+        }
+    }
+    private maxValueValidator(max:number,hint:string){
+        return (control:AbstractControl)=>{
+            if(!Max.check(control,max)){
                 return {
                     'error': hint
                 };
