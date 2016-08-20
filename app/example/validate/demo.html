@@ -24,12 +24,20 @@
                     <label class="orange">{{showError(emailControl)}}</label>
                 </div>
                  <div class="field">
-                    <label>邮箱</label>
+                    <label>密码</label>
                     <input type="password"
                            placeholder="请输入密码"
                            [ngFormControl]='passwordControl'
                     >
                     <label class="orange">{{showError(passwordControl)}}</label>
+                </div>
+                <div class="inline field">
+                    <div class="ui checkbox toggle">
+                          <input type="checkbox" tabindex="0" class="hidden" id="check1" 
+                            [ngFormControl]='mustCheckControl'>
+                          <label for="check1">是否同意该协议</label>
+                        <div class="orange">{{showError(mustCheckControl)}}</div>
+                    </div>
                 </div>
                 <div class="field">
                     <label>性别</label>

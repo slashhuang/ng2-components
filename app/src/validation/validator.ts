@@ -5,9 +5,9 @@
 
 import { Control, ControlGroup,AbstractControl } from '@angular/common';
 
-import { HasValue ,IsNumeric, Min, Max ,
+import { HasValue ,TrueValue,IsNumeric, Min, Max ,
     Range , MinLength ,MaxLength , Length ,
-    IsLength,IsPattern ,IsEmail,IsTelephone } from "../../src/index";
+    IsLength,IsPattern ,IsEmail,IsTelephone } from "./index";
 
 interface  ErrorShape{
     error:string
@@ -24,6 +24,7 @@ export class SuperValidator {
     public _max_lengthControl:Function;
     public _lengthControl : Function;
     public _rangeControl : Function;
+    public _trueValueContrl : Function;
     public _isLengthControl : Function;
     constructor(){
         this._emailControl = (hint:string)=>new Control('',this.EmailValidator(hint));
@@ -34,6 +35,7 @@ export class SuperValidator {
         this._rangeControl = (minMax:{min:number,max:number},hint:string)=>new Control('',this.rangeValidator(minMax,hint));
         this._isLengthControl = (length:number,hint:string)=>new Control('',this.IsLengthValidator(length,hint));
         this._hasValueControl = (hint:string)=>new Control('',this.HasValueValidator(hint))
+        this._trueValueContrl =(hint:string)=>new Control('',this.trueValueValidator(hint));
     }
     showAllError(_controlArr:ControlGroup):ErrorObjShape{
         
@@ -85,6 +87,15 @@ export class SuperValidator {
     private HasValueValidator(hint:string){
         return (control:AbstractControl)=> {
             if (!HasValue.check(control)) {
+                return {
+                    'error': hint
+                };
+            }
+        }
+    }
+    private trueValueValidator(hint:string){
+        return (control:AbstractControl)=> {
+            if (!TrueValue.check(control)) {
                 return {
                     'error': hint
                 };

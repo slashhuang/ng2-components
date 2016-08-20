@@ -21,6 +21,7 @@ export class ValidateDemo extends  SuperValidator {
     private codeControl:Control;
     private selectControl : Control;
     private passwordControl : Control;
+    private mustCheckControl: Control;
     private submitted :boolean =false;
     constructor(){
         super();
@@ -29,14 +30,17 @@ export class ValidateDemo extends  SuperValidator {
         this.codeControl = this._isLengthControl(4,'请输入正确的4位验证码');
         this.selectControl = this._hasValueControl('请选择性别');
         this.passwordControl = this._lengthControl({min:6,max:14},'请输入6至14位密码');
+        this.mustCheckControl = this._trueValueContrl('请同意该协议');
         this.myForm = new ControlGroup({
             email: this.emailControl,
             text: this.textControl,
             code:this.codeControl,
             select:this.selectControl,
-            pass:this.passwordControl
+            pass:this.passwordControl,
+            protocal: this.mustCheckControl
         });
     }
+ 
     get ErrorMessage():string{
         let errorObj = this.showAllError(this.myForm);
         return JSON.stringify(errorObj,null,2)

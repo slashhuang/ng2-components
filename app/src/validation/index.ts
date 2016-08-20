@@ -5,7 +5,8 @@
 /**
  * logic-level
  */
-export { HasValue } from './logics/hasValue.logic';
+export { HasValue } from './logics/basic/hasValue.logic';
+export { TrueValue } from './logics/basic/trueValue.logic';
 
 export { IsNumeric } from './logics/numeric/isNumeric.logic';
 export { Min } from './logics/numeric/min.logic';
@@ -20,4 +21,4 @@ export { IsLength } from './logics/length/isLength.logic';
 export { IsPattern } from './logics/patterns/isPattern.logic';
 export { IsEmail } from './logics/patterns/isEmail.logic';
 export { IsTelephone } from './logics/patterns/isTelephone.logic';
-export {SuperValidator} from './validator';
+export { SuperValidator } from './validator';
