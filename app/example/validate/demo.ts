@@ -20,7 +20,7 @@ export class ValidateDemo extends  SuperValidator {
     private textControl:Control;
     private codeControl:Control;
     private selectControl : Control;
-    private fileControl  :Control;
+    private passwordControl : Control;
     private submitted :boolean =false;
     constructor(){
         super();
@@ -28,13 +28,13 @@ export class ValidateDemo extends  SuperValidator {
         this.textControl = this._min_lengthControl(2,'请至少输入2位文字');
         this.codeControl = this._isLengthControl(4,'请输入正确的4位验证码');
         this.selectControl = this._hasValueControl('请选择性别');
-        this.fileControl = this._hasValueControl('请选择文件上传');
+        this.passwordControl = this._lengthControl({min:6,max:14},'请输入6至14位密码');
         this.myForm = new ControlGroup({
             email: this.emailControl,
             text: this.textControl,
             code:this.codeControl,
             select:this.selectControl,
-            file:this.fileControl
+            pass:this.passwordControl
         });
     }
     get ErrorMessage():string{

@@ -47,7 +47,7 @@ export class SuperValidator {
         return ErrorArr;
     }
     showError(sub_control:AbstractControl):ErrorShape{
-        debugger;
+      
         let _Error:any= sub_control.errors;
         if(_Error &&  _Error.error){
             return _Error.error;

@@ -23,12 +23,13 @@
                     >
                     <label class="orange">{{showError(emailControl)}}</label>
                 </div>
-                <div class="field">
-                    <label>请选择文件</label>
-                    <input type="file"
-                           [ngFormControl]='fileControl'
+                 <div class="field">
+                    <label>邮箱</label>
+                    <input type="password"
+                           placeholder="请输入密码"
+                           [ngFormControl]='passwordControl'
                     >
-                    <label class="orange">{{showError(fileControl)}}</label>
+                    <label class="orange">{{showError(passwordControl)}}</label>
                 </div>
                 <div class="field">
                     <label>性别</label>
