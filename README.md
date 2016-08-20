@@ -19,6 +19,9 @@
 |-|- example/validator [validator组件示例]  
 
 ## 目前已经集成的组件
+- [dialog组件](./app/example/dialog/demo.ts)
+- [validate表单验证组件](./app/example/validate/demo.ts)
+
 ##### dialog 弹出框.  示例代码```example/dialog/demo.ts```
 ```javascript
     ## 调用方
