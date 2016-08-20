@@ -1,19 +1,19 @@
 <div class="container">
     <form class="ui form"
           [ngFormModel]="myForm"
-          (ngSubmit)="onSubmit()">
-        <div class="ui form">
+          (ngSubmit)="submitted=true">
             <div class="fields">
-                <!--<div class="field">-->
-                    <!--<label>请输入姓名</label>-->
-                    <!--<input type="text"-->
-                           <!--[ngFormControl]='nameControl'>-->
-                <!--</div>-->
+                <div class="field">
+                    <label>请输入4位验证码</label>
+                    <input type="text"
+                           [ngFormControl]='codeControl'>
+                    <label class="orange">{{showError(codeControl)}}</label>
+                </div>
                 <div class="field">
                     <label>请输入姓名</label>
                     <input type="text"
                            [ngFormControl]='textControl' >
-                    <label>{{showError(textControl)}}</label>
+                    <label class="orange">{{showError(textControl)}}</label>
                 </div>
                 <div class="field">
                     <label>邮箱</label>
@@ -21,11 +21,27 @@
                            placeholder="请输入邮箱"
                            [ngFormControl]='emailControl'
                     >
-                    <label>{{showError(emailControl)}}</label>
+                    <label class="orange">{{showError(emailControl)}}</label>
+                </div>
+                <div class="field">
+                    <label>请选择文件</label>
+                    <input type="file"
+                           [ngFormControl]='fileControl'
+                    >
+                    <label class="orange">{{showError(fileControl)}}</label>
+                </div>
+                <div class="field">
+                    <label>性别</label>
+                    <select class="ui dropdown" name="gender"  [ngFormControl]='selectControl'>
+                        <option value="">Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <label class="orange">{{showError(selectControl)}}</label>
                 </div>
             </div>
-        </div>
         <button type="submit" class="ui button" [disabled]="!myForm.valid">提交</button>
     </form>
     <pre>{{ErrorMessage}}</pre>
+    <pre *ngIf="submitted">{{getFormData}}</pre>
 </div>

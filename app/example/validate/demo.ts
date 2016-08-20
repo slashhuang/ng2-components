@@ -1,7 +1,7 @@
 /**
  * Created by slashhuang on 16/8/14.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Control, ControlGroup } from '@angular/common';
 
 /**
@@ -11,26 +11,42 @@ import { SuperValidator } from "../../src/index";
 
 @Component({
     template:require('./demo.html'),
-    selector: 'validate-demo'
+    selector: 'validate-demo',
+    styles:[require('./demo.css')]
 })
-export class ValidateDemo extends  SuperValidator implements OnInit {
+export class ValidateDemo extends  SuperValidator {
     private myForm: ControlGroup;
     private emailControl: Control;
     private textControl:Control;
+    private codeControl:Control;
+    private selectControl : Control;
+    private fileControl  :Control;
+    private submitted :boolean =false;
     constructor(){
         super();
-    }
-    public ngOnInit(): void {
         this.emailControl = this._emailControl('请输入正确的邮箱地址');
-        this.textControl = this._hasValueControl('该值不能为空');
+        this.textControl = this._min_lengthControl(2,'请至少输入2位文字');
+        this.codeControl = this._isLengthControl(4,'请输入正确的4位验证码');
+        this.selectControl = this._hasValueControl('请选择性别');
+        this.fileControl = this._hasValueControl('请选择文件上传');
         this.myForm = new ControlGroup({
             email: this.emailControl,
-            text: this.textControl
+            text: this.textControl,
+            code:this.codeControl,
+            select:this.selectControl,
+            file:this.fileControl
         });
     }
     get ErrorMessage():string{
         let errorObj = this.showAllError(this.myForm);
         return JSON.stringify(errorObj,null,2)
     }
-    onSubmit() {}
+    get getFormData(){
+        if(this.submitted) {
+            return JSON.stringify(this.myForm.value, null, 2)
+        }
+    }
+    onSubmit() {
+        this.submitted=true;
+    }
 }
