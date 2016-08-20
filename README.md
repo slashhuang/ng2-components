@@ -20,10 +20,11 @@
 |-|- example/validator [validator组件示例]  
 
 ## 目前已经集成的组件
-- dialog
-<img src='./assets/dialog.gif' width='300px'>
-- validator
-<img src='./assets/validator.gif' width='300px'>
+##### dialog 弹出框
+<img src='./assets/dialog.gif' width='400px'>
+
+#### validator 表单验证
+<img src='./assets/validator.gif' width='400px'>
 
 ## ng2整体架构分析
 - component为@directive中带有模板特点的指令
