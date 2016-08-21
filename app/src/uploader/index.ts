@@ -16,4 +16,3 @@ export default {
         FILE_UPLOAD_DIRECTIVES
     ]
 };
-export const FILE_UPLOAD_DIRECTIVES:[any] = [FileSelectDirective, FileDropDirective];
