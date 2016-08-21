@@ -1,0 +1,24 @@
+<div class="ui inverted segment" *ngIf="progressState">
+    <div class="ui inverted progress"
+         [ngStyle]="{'width': progressState.progress}"
+         *ngIf="progressState.state=='progress'">
+        <div class="bar">
+            <div class="progress"></div>
+        </div>
+        <div class="label">上传中</div>
+    </div>
+    <div class="ui inverted progress success"
+         *ngIf="progressState.state=='success'">
+        <div class="bar" [ngStyle]="{width:'100%'}">
+            <div class="progress"></div>
+        </div>
+        <div class="label">上传成功</div>
+    </div>
+    <div class="ui inverted progress error"
+         *ngIf="progressState.state=='error'">
+        <div class="bar" [ngStyle]="{width:'100%'}">
+            <div class="progress"></div>
+        </div>
+        <div class="label">上传失败</div>
+    </div>
+</div>

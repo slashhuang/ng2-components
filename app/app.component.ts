@@ -7,6 +7,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
  */
 import {DialogDemo } from './example/dialog/demo';
 import {ValidateDemo} from './example/validate/demo';
+import {UploadDemo} from './example/uploader/demo';
 
 
 /**
@@ -19,6 +20,7 @@ import {ValidateDemo} from './example/validate/demo';
     <nav>
       <a [routerLink]="['Dialog']">dialog组件</a>
        <a [routerLink]="['Validator']">validator组件</a>
+        <a [routerLink]="['Uploader']">uploader组件</a>
     </nav>
     <hr/>
     <router-outlet></router-outlet>
@@ -39,6 +41,11 @@ import {ValidateDemo} from './example/validate/demo';
         path: '/validate',
         name: 'Validator',
         component: ValidateDemo
+    },
+    {
+        path: '/uploader',
+        name: 'Uploader',
+        component: UploadDemo
     }
 ])
 /**
