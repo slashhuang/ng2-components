@@ -27,12 +27,19 @@
 
 ## UI展示
 > dialog 弹出框组件
+
 <img src='./assets/dialog.gif' width='400px'>
+
 > validate 表单验证组件
+
 <img src='./assets/validator.gif' width='400px'>
+
 > progressBar 进度条组件
+
 <img src='./assets/progressBar.gif' width='400px'>
+
 > uploader 文件上传组件
+
 <img src='./assets/uploader.gif' width='400px'>
 
 
