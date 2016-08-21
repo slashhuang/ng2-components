@@ -1,8 +1,14 @@
+/**
+ * uploader组件源于,仅仅增加了progressBar展现功能点
+ * https://github.com/danialfarid/ng-file-upload/
+ * 仅仅能够在支持HTML5的浏览器中使用
+ */
 import {Component} from '@angular/core';
 import {CORE_DIRECTIVES} from '@angular/common';
 import {AfterViewInit} from '@angular/core';
 import {FILE_UPLOAD_DIRECTIVES, FileUploader,ProgressBar} from "../../src/index";
 
+//测试地址
 const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
