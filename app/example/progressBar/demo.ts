@@ -2,9 +2,8 @@
  * Created by slashhuang on 16/8/14.
  */
 import { Component } from '@angular/core';
-/**
- * 验证组件父类
- */
+
+//上传进度条
 import { ProgressBar,ProgressModel } from "../../src/index";
 
 @Component({
@@ -13,7 +12,7 @@ import { ProgressBar,ProgressModel } from "../../src/index";
     selector: 'upload-demo',
     styles:[require('./demo.css')]
 })
-export class UploadDemo {
+export class ProgressDemo {
     private progressError:ProgressModel={
         state:'error',
         progress:'100%'

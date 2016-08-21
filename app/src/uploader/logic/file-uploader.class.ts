@@ -362,7 +362,7 @@ export class FileUploader {
       return this.options.filters;
     }
     if (Array.isArray(filters)) {
-      return filters;
+      return <FilterFunction[]>filters;
     }
     if (typeof filters === 'string') {
       let names = filters.match(/[^\s,]+/g);
