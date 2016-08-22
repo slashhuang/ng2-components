@@ -1,0 +1,122 @@
+<style>
+    .my-drop-zone { border: dotted 3px lightgray; padding:20px; }
+    .nv-file-over { border: dotted 3px red;}
+</style>
+<div class="ui grid">
+    <div class="ten wide column">
+        <div class="row">
+            <h3>文件上传区域</h3>
+            <div ng2FileDrop
+                 [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                 (fileOver)="fileOverBase($event)"
+                 [uploader]="uploader"
+                 class="my-drop-zone">
+                拖拽上传
+            </div>
+
+           多个文件上传
+            <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+
+           单个文件上传
+            <input type="file" ng2FileSelect [uploader]="uploader" />
+        </div>
+        <div class="eight column ui" style="margin-bottom: 40px">
+            <h3>上传等待区</h3>
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th>文件名</th>
+                    <th>文件大小</th>
+                    <th>上传进度</th>
+                    <th>状态</th>
+                    <th>按钮</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of uploader.queue">
+                    <td>
+                        <div style='width:150px'>
+                        {{item.file.name}}
+                        </div>
+                    </td>
+                    <td  nowrap>
+                        {{item.file.size/1000+'KB'}}
+                    </td>
+                    <td *ngIf="uploader.options.isHTML5" >
+                        <div style="width: 300px;">
+                            <progress-bar
+                                    [progressState]="{ 'progress': item.progress + '%','state':item.progress==100?'success':'progress' }">
+                            </progress-bar>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div style="width:100px" *ngIf="item.progress==0">
+                            <i class="ellipsis horizontal icon"></i>
+                            等待上传
+                        </div>
+                        <div style="width:100px" *ngIf="item.isSuccess">
+                            <i class="check square icon"
+                               style="color:green"
+                            ></i>
+                            上传成功
+                        </div>
+                        <div style="width:100px" *ngIf="item.isCancel">
+                            <i class="minus square icon"></i>
+                            取消上传
+                        </div>
+                        <div style="width:100px" *ngIf="item.isError">
+                            <i class="remove circle icon" style="color: red;"></i>
+                            上传失败
+                        </div>
+                    </td>
+                    <td nowrap>
+                        <button type="button"
+                                class="ui blue button"
+                                (click)="item.upload()"
+                                [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                            上传
+                        </button>
+                        <button type="button"
+                                class="ui orange button"
+                                (click)="item.cancel()"
+                                [disabled]="!item.isUploading">
+                           取消
+                        </button>
+                        <button type="button" class="ui olive button"
+                                (click)="item.remove()">
+                            移除
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div>
+                上传队列
+                <div *ngIf="uploader.options.isHTML5">
+                    <progress-bar
+                            [progressState]="{ 'progress': uploader.progress + '%','state':uploader.progress==100?'success':'progress' }">
+                    </progress-bar>
+                </div>
+                <button type="button"  class="ui blue button"
+                        (click)="uploader.uploadAll()"
+                        [disabled]="!uploader.getNotUploadedItems().length">
+                    全部上传
+                </button>
+                <button type="button"  class="ui orange button"
+                        (click)="uploader.cancelAll()"
+                        [disabled]="!uploader.isUploading">
+                    取消
+                </button>
+                <button type="button" class="ui olive button"
+                        (click)="uploader.clearQueue()"
+                        [disabled]="!uploader.queue.length">
+                    全部移除
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

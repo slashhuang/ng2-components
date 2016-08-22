@@ -1,14 +1,37 @@
 <div class="container">
+    <div class="ui grid">
+        <div class="ten wide column">
     <form class="ui form"
           [formGroup]="myForm"
           (ngSubmit)="submitted=true">
-            <div class="fields">
-                <div class="field">
+                <div class="fields four">
+                    <div class="field ">
                     <label>请输入4位验证码</label>
                     <input type="text"
                            [formControl]='codeControl'>
                     <label class="orange">{{showError(codeControl)}}</label>
                 </div>
+                    <div class="field ">
+                        <label>请输入10-100内的数字</label>
+                        <input type="text"
+                               [formControl]='numControl'>
+                        <label class="orange">{{showError(numControl)}}</label>
+                    </div>
+                    <div class="field ">
+                        <label>请输入大于100的数字</label>
+                        <input type="text"
+                               [formControl]='minControl'>
+                        <label class="orange">{{showError(minControl)}}</label>
+                    </div>
+                    <div class="field ">
+                        <label>请输入小于100的数字</label>
+                        <input type="text"
+                               [formControl]='maxControl'>
+                        <label class="orange">{{showError(maxControl)}}</label>
+                    </div>
+
+                </div>
+                <div class="fields three">
                 <div class="field">
                     <label>请输入姓名</label>
                     <input type="text"
@@ -31,9 +54,12 @@
                     >
                     <label class="orange">{{showError(passwordControl)}}</label>
                 </div>
-                <div class="inline field">
+                </div>
+                <div class="fields three">
+                    <div class="field">
+                        <label>checkbox验证</label>
                     <div class="ui checkbox toggle">
-                          <input type="checkbox" tabindex="0" class="hidden" id="check1" 
+                            <input type="checkbox" tabindex="0" class="hidden" id="check1"
                             [formControl]='mustCheckControl'>
                           <label for="check1">是否同意该协议</label>
                         <div class="orange">{{showError(mustCheckControl)}}</div>
@@ -51,6 +77,12 @@
             </div>
         <button type="submit" class="ui button" [disabled]="!myForm.valid">提交</button>
     </form>
+        </div>
+        <div class="six wide column">
     <pre>{{ErrorMessage}}</pre>
     <pre *ngIf="submitted">{{getFormData}}</pre>
+        </div>
+    </div>
+
+
 </div>

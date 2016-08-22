@@ -30,7 +30,7 @@ const METADATA = {
 module.exports = {
 
   /*
-   * Static metadata for index.html
+   * Static metadata for index.progressBar
    *
    * See: (custom attribute)
    */
@@ -149,7 +149,7 @@ module.exports = {
         test: /\.less$/,
         loaders: ['raw-loader','less-loader']
       },
-      /* Raw loader support for *.html
+      /* Raw loader support for *.progressBar
        * Returns file content as string
        * See: https://github.com/webpack/raw-loader
        */
