@@ -1,25 +1,25 @@
 <div class="container">
     <form class="ui form"
-          [ngFormModel]="myForm"
+          [formGroup]="myForm"
           (ngSubmit)="submitted=true">
             <div class="fields">
                 <div class="field">
                     <label>请输入4位验证码</label>
                     <input type="text"
-                           [ngFormControl]='codeControl'>
+                           [formControl]='codeControl'>
                     <label class="orange">{{showError(codeControl)}}</label>
                 </div>
                 <div class="field">
                     <label>请输入姓名</label>
                     <input type="text"
-                           [ngFormControl]='textControl' >
+                           [formControl]='textControl' >
                     <label class="orange">{{showError(textControl)}}</label>
                 </div>
                 <div class="field">
                     <label>邮箱</label>
                     <input type="text"
                            placeholder="请输入邮箱"
-                           [ngFormControl]='emailControl'
+                           [formControl]='emailControl'
                     >
                     <label class="orange">{{showError(emailControl)}}</label>
                 </div>
@@ -27,21 +27,21 @@
                     <label>密码</label>
                     <input type="password"
                            placeholder="请输入密码"
-                           [ngFormControl]='passwordControl'
+                           [formControl]='passwordControl'
                     >
                     <label class="orange">{{showError(passwordControl)}}</label>
                 </div>
                 <div class="inline field">
                     <div class="ui checkbox toggle">
                           <input type="checkbox" tabindex="0" class="hidden" id="check1" 
-                            [ngFormControl]='mustCheckControl'>
+                            [formControl]='mustCheckControl'>
                           <label for="check1">是否同意该协议</label>
                         <div class="orange">{{showError(mustCheckControl)}}</div>
                     </div>
                 </div>
                 <div class="field">
                     <label>性别</label>
-                    <select class="ui dropdown" name="gender"  [ngFormControl]='selectControl'>
+                    <select class="ui dropdown" name="gender"  [formControl]='selectControl'>
                         <option value="">Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>

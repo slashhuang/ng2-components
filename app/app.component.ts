@@ -7,7 +7,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
  */
 import {DialogDemo } from './example/dialog/demo';
 import {ValidateDemo} from './example/validate/demo';
-
+import {SMSCodeDemo} from './example/smscode/demo';
 
 /**
  * 组件元数据metadata
@@ -18,7 +18,8 @@ import {ValidateDemo} from './example/validate/demo';
     <h1>{{title}}</h1>
     <nav>
       <a [routerLink]="['Dialog']">dialog组件</a>
-       <a [routerLink]="['Validator']">validator组件</a>
+      <a [routerLink]="['Validator']">validator组件</a>
+      <a [routerLink]="['SMSCode']">smscode组建</a>
     </nav>
     <hr/>
     <router-outlet></router-outlet>
@@ -35,11 +36,16 @@ import {ValidateDemo} from './example/validate/demo';
     name: 'Dialog',
     component: DialogDemo
   },
-    {
-        path: '/validate',
-        name: 'Validator',
-        component: ValidateDemo
-    }
+  {
+      path: '/validate',
+      name: 'Validator',
+      component: ValidateDemo
+  },
+  {
+    path: '/smscode',
+    name: 'SMSCode',
+    component: SMSCodeDemo
+  }
 ])
 /**
  * 组件 model+ controller
