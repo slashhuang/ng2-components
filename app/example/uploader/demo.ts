@@ -11,7 +11,7 @@ import {FILE_UPLOAD_DIRECTIVES, FileUploader,ProgressBar} from "../../src/index"
 const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
-    selector: 'simple-demo',
+    selector: 'upload-demo',
     template: require('./demo.html'),
     directives: [FILE_UPLOAD_DIRECTIVES,CORE_DIRECTIVES,ProgressBar]
 })

@@ -9,7 +9,7 @@ import { ProgressBar,ProgressModel } from "../../src/index";
 @Component({
     template:require('./demo.html'),
     directives:[ProgressBar],
-    selector: 'upload-demo',
+    selector: 'progress-demo',
     styles:[require('./demo.css')]
 })
 export class ProgressDemo {
