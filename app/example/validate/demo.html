@@ -1,86 +1,86 @@
 <div class="container">
     <div class="ui grid">
         <div class="ten wide column">
-            <form class="ui form"
-                  [ngFormModel]="myForm"
-                  (ngSubmit)="submitted=true">
+    <form class="ui form"
+          [formGroup]="myForm"
+          (ngSubmit)="submitted=true">
                 <div class="fields four">
                     <div class="field ">
-                        <label>请输入4位验证码</label>
-                        <input type="text"
-                               [ngFormControl]='codeControl'>
-                        <label class="orange">{{showError(codeControl)}}</label>
-                    </div>
+                    <label>请输入4位验证码</label>
+                    <input type="text"
+                           [formControl]='codeControl'>
+                    <label class="orange">{{showError(codeControl)}}</label>
+                </div>
                     <div class="field ">
                         <label>请输入10-100内的数字</label>
                         <input type="text"
-                               [ngFormControl]='numControl'>
+                               [formControl]='numControl'>
                         <label class="orange">{{showError(numControl)}}</label>
                     </div>
                     <div class="field ">
                         <label>请输入大于100的数字</label>
                         <input type="text"
-                               [ngFormControl]='minControl'>
+                               [formControl]='minControl'>
                         <label class="orange">{{showError(minControl)}}</label>
                     </div>
                     <div class="field ">
                         <label>请输入小于100的数字</label>
                         <input type="text"
-                               [ngFormControl]='maxControl'>
+                               [formControl]='maxControl'>
                         <label class="orange">{{showError(maxControl)}}</label>
                     </div>
 
                 </div>
                 <div class="fields three">
-                    <div class="field">
-                        <label>请输入姓名</label>
-                        <input type="text"
-                               [ngFormControl]='textControl' >
-                        <label class="orange">{{showError(textControl)}}</label>
-                    </div>
-                    <div class="field">
-                        <label>邮箱</label>
-                        <input type="text"
-                               placeholder="请输入邮箱"
-                               [ngFormControl]='emailControl'
-                        >
-                        <label class="orange">{{showError(emailControl)}}</label>
-                    </div>
-                    <div class="field">
-                        <label>密码</label>
-                        <input type="password"
-                               placeholder="请输入密码"
-                               [ngFormControl]='passwordControl'
-                        >
-                        <label class="orange">{{showError(passwordControl)}}</label>
-                    </div>
+                <div class="field">
+                    <label>请输入姓名</label>
+                    <input type="text"
+                           [formControl]='textControl' >
+                    <label class="orange">{{showError(textControl)}}</label>
+                </div>
+                <div class="field">
+                    <label>邮箱</label>
+                    <input type="text"
+                           placeholder="请输入邮箱"
+                           [formControl]='emailControl'
+                    >
+                    <label class="orange">{{showError(emailControl)}}</label>
+                </div>
+                 <div class="field">
+                    <label>密码</label>
+                    <input type="password"
+                           placeholder="请输入密码"
+                           [formControl]='passwordControl'
+                    >
+                    <label class="orange">{{showError(passwordControl)}}</label>
+                </div>
                 </div>
                 <div class="fields three">
                     <div class="field">
                         <label>checkbox验证</label>
-                        <div class="ui checkbox toggle">
+                    <div class="ui checkbox toggle">
                             <input type="checkbox" tabindex="0" class="hidden" id="check1"
-                                   [ngFormControl]='mustCheckControl'>
-                            <label for="check1">是否同意该协议</label>
-                            <div class="orange">{{showError(mustCheckControl)}}</div>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>性别</label>
-                        <select class="ui dropdown" name="gender"  [ngFormControl]='selectControl'>
-                            <option value="">Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                        <label class="orange">{{showError(selectControl)}}</label>
+                            [formControl]='mustCheckControl'>
+                          <label for="check1">是否同意该协议</label>
+                        <div class="orange">{{showError(mustCheckControl)}}</div>
                     </div>
                 </div>
-                <button type="submit" class="ui button" [disabled]="!myForm.valid">提交</button>
-            </form>
+                <div class="field">
+                    <label>性别</label>
+                    <select class="ui dropdown" name="gender"  [formControl]='selectControl'>
+                        <option value="">Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <label class="orange">{{showError(selectControl)}}</label>
+                </div>
+            </div>
+        <button type="submit" class="ui button" [disabled]="!myForm.valid">提交</button>
+    </form>
         </div>
         <div class="six wide column">
-            <pre>{{ErrorMessage}}</pre>
-            <pre *ngIf="submitted">{{getFormData}}</pre>
+    <pre>{{ErrorMessage}}</pre>
+    <pre *ngIf="submitted">{{getFormData}}</pre>
         </div>
     </div>
 

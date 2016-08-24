@@ -3,6 +3,8 @@
  */
 import { Component } from '@angular/core';
 import {Control, ControlGroup, AbstractControl} from '@angular/common';
+import {REACTIVE_FORM_DIRECTIVES}
+    from '@angular/forms';
 
 /**
  * 验证组件父类
@@ -12,7 +14,8 @@ import { SuperValidator } from "../../src/index";
 @Component({
     template:require('./demo.html'),
     selector: 'validate-demo',
-    styles:[require('./demo.css')]
+    styles:[require('./demo.css')],
+    directives: [REACTIVE_FORM_DIRECTIVES]
 })
 export class ValidateDemo {
     private myForm: ControlGroup;

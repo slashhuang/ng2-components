@@ -7,12 +7,9 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
  */
 import {DialogDemo } from './example/dialog/demo';
 import {ValidateDemo} from './example/validate/demo';
+import {SMSCodeDemo} from './example/smscode/demo';
 import {ProgressDemo} from './example/progressBar/demo';
 import {UploaderDemo} from './example/uploader/demo';
-/**
- * 用于实验ng2的组件
- */
-import {TestDemo} from './example/test/test'
 
 /**
  * 组件元数据metadata
@@ -26,7 +23,7 @@ import {TestDemo} from './example/test/test'
        <a [routerLink]="['Validator']">validator表单验证组件</a>
         <a [routerLink]="['ProgressBar']">progress进度条组件</a>
         <a [routerLink]="['Uploader']">uploader上传组件</a>
-        <a [routerLink]="['Test']">实验页面</a>
+       <a [routerLink]="['SMSCode']">smscode组建</a>
     </nav>
     <hr/>
     <router-outlet></router-outlet>
@@ -44,10 +41,10 @@ import {TestDemo} from './example/test/test'
     component: DialogDemo,
     useAsDefault:true
   },
-    {
-        path: '/validate',
-        name: 'Validator',
-        component: ValidateDemo
+  {
+      path: '/validate',
+      name: 'Validator',
+      component: ValidateDemo
     },
     {
         path: '/progressBar',
@@ -58,12 +55,13 @@ import {TestDemo} from './example/test/test'
         path: '/uploader',
         name: 'Uploader',
         component: UploaderDemo
-    },
-    {
-        path: '/test',
-        name: 'Test',
-        component: TestDemo
-    }
+  },
+  {
+    path: '/smscode',
+    name: 'SMSCode',
+    component: SMSCodeDemo
+  }
+
 ])
 /**
  * 组件 model+ controller
