@@ -14,15 +14,12 @@ import { Component, Input, Output, EventEmitter,OnDestroy } from '@angular/core'
 export class SMSCode implements OnDestroy {
     @Output() sendSMSCode = new EventEmitter();
     @Input() sendCodeText: string = '发送验证码';
-    @Input() count: number = 60; // 倒计时（秒）
+    @Input() counter: number = 60; // 倒计时（秒）
     btnText = this.sendCodeText;
-    counter: number = null;
     value: string;
     timer: any= null;
 
     sendCode() {
-        this.counter = this.count;
-        this.btnText = '' + this.counter;
         this.timer = setInterval(() => {
             --this.counter;
             if(this.counter <= 0) {

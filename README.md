@@ -23,6 +23,7 @@
 ##### validate [表单验证组件 示例代码](./app/example/validate/demo.ts)
 ##### progressBar [组件 示例代码](./app/example/progressBar/demo.ts)
 ##### uploader [上传组件 示例代码](./app/example/uploader/demo.ts)
+#### countdown [验证码倒计时 示例代码](./app/example/smscode/demo.ts)
 
 
 ## UI展示
@@ -41,6 +42,10 @@
 > uploader 文件上传组件
 
 <img src='./assets/uploader.gif' width='400px'>
+
+> countdown 倒计时
+
+<img src='./assets/countdown.gif' width='400px'>
 
 
 ## ng2整体架构分析
