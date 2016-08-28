@@ -6,7 +6,7 @@
     "start": "./node_modules/.bin/webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached",
     "test": "karma start",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
-    "postinstall": "typings install && bower install"
+    "postinstall": "typings install && ./node_modules/.bin/bower install"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",
@@ -69,6 +69,8 @@
   "bugs": {
     "url": "http://github.com:slashhuang/ng2-components/issues"
   },
-  "homepage": "git@github.com:slashhuang/ng2-components.git"
-
+  "homepage": "git@github.com:slashhuang/ng2-components.git",
+  "devDependencies": {
+    "bower": "^1.7.9"
+  }
 }
