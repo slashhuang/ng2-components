@@ -21,7 +21,11 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   ENV: ENV,
   HMR: HMR
 });
-require('./open');
+/**
+ * 自动打开监听端口
+ */
+const open =require('./open');
+open({port:METADATA.port});
 
 /**
  * Webpack configuration

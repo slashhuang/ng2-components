@@ -71,6 +71,6 @@
   },
   "homepage": "git@github.com:slashhuang/ng2-components.git",
   "devDependencies": {
-    "bower": "^1.7.9"
+    "open": "0.0.5"
   }
 }
