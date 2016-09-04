@@ -127,6 +127,6 @@ export class IsEmail {
 export class IsTelephone{
     public static check(control:AbstractControl){
         let reg:RegExp = /^1[0-9]{10}$/;
-        return IsPattern.check(control.value,reg)
+        return IsPattern.check(control,reg)
     }
 }
